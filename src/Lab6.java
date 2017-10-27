@@ -28,7 +28,7 @@ public class Lab6 {
 
 		}
 		System.out.println();
-		System.out.println("Thank you for Playing!");
+		System.out.println("I hope you enjoying your translation");
 		scnr.close();
 	}
 
@@ -36,6 +36,7 @@ public class Lab6 {
 	public static String translatePigLatin(String word) {
 		String finalWord = word.toLowerCase();
 		String appender = "";
+		int vowelLocation = 0;
 		switch (finalWord.charAt(0)) {
 
 		case 'a':
@@ -43,13 +44,55 @@ public class Lab6 {
 		case 'i':
 		case 'o':
 		case 'u':
+		case 'y':
 			appender = "way";
+			finalWord = finalWord + "-" + appender;
 			break;
 		default:
-			appender = finalWord.charAt(0) + "way ";
+			vowelLocation = determineVowelLocation(finalWord);
+			finalWord = finalWord.substring(vowelLocation, finalWord.length()) + "-"
+					+ finalWord.substring(0, vowelLocation) + "way ";
 		}
-		// used the substring method to remove the first character
-		finalWord = finalWord.substring(1, finalWord.length()) + "-" + appender;
+
 		return finalWord;
+	}
+
+	// takes in a word and find the first applicable value
+	public static int determineVowelLocation(String word) {
+		int vowelLocation;
+
+		// have to check if it was the lowest (closer to beginning) or if none it
+		// returns -1
+		// start with a, if there is an a put the index
+		vowelLocation = word.indexOf("a");
+		// I used if statements because there could be more than one vowel
+		if (vowelLocation > word.indexOf("e") || vowelLocation == -1) {
+			if (word.indexOf("e") > -1) {
+				vowelLocation = word.indexOf("e");
+			}
+		}
+		if (vowelLocation > word.indexOf("i") || vowelLocation == -1) {
+			if (word.indexOf("i") > -1) {
+				vowelLocation = word.indexOf("i");
+			}
+		}
+		if (vowelLocation > word.indexOf("o") || vowelLocation == -1) {
+
+			if (word.indexOf("o") > -1) {
+				vowelLocation = word.indexOf("o");
+			}
+		}
+		if (vowelLocation > word.indexOf("u") || vowelLocation == -1) {
+			if (word.indexOf("u") > -1) {
+				vowelLocation = word.indexOf("u");
+			}
+		}
+		if (vowelLocation > word.indexOf("y") || vowelLocation == -1) {
+			if (word.indexOf("y") > -1) {
+
+				vowelLocation = word.indexOf("y");
+			}
+		}
+		return vowelLocation;
 	}
 }
