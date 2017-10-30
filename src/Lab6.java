@@ -57,6 +57,14 @@ public class Lab6 {
 		return finalWord;
 	}
 
+	/**
+	 * Returns the location of the first value in a sort of convoluted way
+	 * 
+	 * @param word
+	 *            a string for checking against
+	 * 
+	 * @return int vowelLocation
+	 */
 	// takes in a word and find the first applicable value
 	public static int determineVowelLocation(String word) {
 		int vowelLocation;
